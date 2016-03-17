@@ -1,11 +1,11 @@
-package com.krish.stacknqueue;
+package com.krish.impl;
 
 import java.util.Stack;
 
 public class QueueViaStack {
 
     public static void main(String[] args) {
-        Queue<Integer> queue = new Queue<Integer>();
+        QueueNew<Integer> queue = new QueueNew<Integer>();
         queue.queue(1);
         queue.queue(2);
         queue.queue(3);
@@ -17,16 +17,16 @@ public class QueueViaStack {
     }
 }
 
-class Queue<E>
+class QueueNew<T>
 {
-    private Stack<E> inbox = new Stack<E>();
-    private Stack<E> outbox = new Stack<E>();
+    private Stack<T> inbox = new Stack<T>();
+    private Stack<T> outbox = new Stack<T>();
 
-    public void queue(E item) {
+    public void queue(T item) {
         inbox.push(item);
     }
 
-    public E dequeue() {
+    public T dequeue() {
         if (outbox.isEmpty()) {
             while (!inbox.isEmpty()) {
                outbox.push(inbox.pop());

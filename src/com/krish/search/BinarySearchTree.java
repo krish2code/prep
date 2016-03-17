@@ -13,59 +13,68 @@ import java.util.Queue;
  * child.
  */
 
-public class BST {
-
-    Node root;
-    static List<Integer> lst = new ArrayList<Integer>();
-
+public class BinarySearchTree {
     public static void main(String[] args) {
         BST bst = new BST();
 
-        bst.insert(5);
-        bst.insert(4);
+        bst.insert(10);
+        bst.insert(9);
+        bst.insert(8);
         bst.insert(6);
-        bst.insert(3);
         bst.insert(7);
+        bst.insert(5);
+        bst.insert(2);
+        bst.insert(12);
+        bst.insert(11);
+        bst.insert(14);
+        bst.insert(16);
+        bst.insert(13);
 
         System.out.println("sumNode " + bst.sumNode(bst.root));
-        
+
         bst.inOrder(bst.root);
         bst.levelOrder(bst.root);
-        System.out.println(lst);
+        
+        System.out.println("inOrder :" + BST.lst);
+        System.out.println("If 10 is present in BT : "+bst.lookup(bst.root, 10));
+        System.out.println("Node count in BT : "+ bst.countNode(bst.root));
 
-        System.out.println(bst.lookup(bst.root, 10));
-        System.out.println(bst.countNode(bst.root));
-        
-        System.out.println(bst.depth(bst.root));
-        
+        System.out.println("BT depth : "+ bst.depth(bst.root));
         bst.mirror(bst.root);
+        bst.inOrder(bst.root);
+        System.out.println("inOrder :" + BST.lst);
+        
     }
+}
 
-    int sum =0;
-    
-    private int sumNode(Node node) {
+class BST {
+
+    Node root;
+    static List<Integer> lst = new ArrayList<Integer>();
+    int sum = 0;
+
+    public int sumNode(Node node) {
         int rootSum = node.data;
         sumNode1(node.leftNode);
         sumNode1(node.rightNode);
         return sum;
     }
 
-
     private int sumNode1(Node node) {
         if (node != null) {
             sum = sum + node.data;
             sumNode1(node.leftNode);
             sumNode1(node.rightNode);
-             return sum;
+            return sum;
         } else {
             return 0;
         }
     }
-    
+
     /*
      * Find minimum value in BT
      */
-    private int minValue() {
+    public int minValue() {
         return minValue(root);
     }
 
@@ -76,27 +85,28 @@ public class BST {
         }
         return currentNode.data;
     }
-    
+
     private static boolean isMirror(Node root1, Node root2) {
         if (root1 == null || root2 == null) {
             return (root1 == null && root2 == null);
         } else {
-            return (root1.data == root2.data && isMirror(root1.leftNode, root2.rightNode) && isMirror(root1.rightNode, root2.leftNode));
+            return (root1.data == root2.data && isMirror(root1.leftNode, root2.rightNode) && isMirror(root1.rightNode,
+                    root2.leftNode));
         }
     }
-    
-    private void mirror(Node node) {
-        if(node != null) {
+
+    public void mirror(Node node) {
+        if (node != null) {
             mirror(node.leftNode);
             mirror(node.rightNode);
-            
+
             Node temp = node.leftNode;
-            node.leftNode= node.rightNode;
+            node.leftNode = node.rightNode;
             node.rightNode = temp;
         }
     }
 
-    private int depth(Node node) {
+    public int depth(Node node) {
         if (node != null) {
             int left = depth(node.leftNode);
             int right = depth(node.rightNode);
@@ -105,7 +115,7 @@ public class BST {
         return 0;
     }
 
-    private int countNode(Node node) {
+    public int countNode(Node node) {
         if (node != null) {
             return countNode(node.leftNode) + countNode(node.rightNode) + 1;
         } else {
@@ -113,32 +123,33 @@ public class BST {
         }
     }
 
-    private void levelOrder(Node node) {
-        System.out.println("Level Order ");
-        if(node != null) {
+    public void levelOrder(Node node) {
+        System.out.print("Level Order : ");
+        if (node != null) {
             Queue<Node> queue = new LinkedList<Node>();
             queue.add(node);
-            
-            while(!queue.isEmpty()) {
+
+            while (!queue.isEmpty()) {
                 Node temp = queue.poll();
                 System.out.print(temp.data + " ");
-                
-                if(temp.leftNode != null) {
+
+                if (temp.leftNode != null) {
                     queue.add(temp.leftNode);
                 }
-                
-                if(temp.rightNode != null) {
+
+                if (temp.rightNode != null) {
                     queue.add(temp.rightNode);
                 }
             }
         }
-        System.out.println("");  
+        System.out.println("");
     }
-    
+
     /*
      * Print BT in preOrderTraversal
      */
-    private static void preOrderTraversal(Node node) {
+    
+    public static void preOrderTraversal(Node node) {
         if (node != null) {
             System.out.print(node.data + " ");
             preOrderTraversal(node.leftNode);
@@ -149,7 +160,7 @@ public class BST {
     /*
      * Print BT in postOrderTraversal
      */
-    private static void postOrderTraversal(Node node) {
+    public static void postOrderTraversal(Node node) {
         if (node != null) {
             postOrderTraversal(node.leftNode);
             postOrderTraversal(node.rightNode);
@@ -160,7 +171,7 @@ public class BST {
     /*
      * Print BT in inOrderTraversal
      */
-    private void inOrder(Node node) {
+    public void inOrder(Node node) {
         if (node != null) {
             inOrder(node.leftNode);
             lst.add(node.data);
@@ -168,7 +179,7 @@ public class BST {
         }
     }
 
-    private boolean lookup(Node node, int i) {
+    public boolean lookup(Node node, int i) {
         if (node == null)
             return false;
         else {
@@ -182,8 +193,8 @@ public class BST {
             }
         }
     }
-    
-    private void insert(int i) {
+
+    public void insert(int i) {
         root = insert(root, i);
     }
 

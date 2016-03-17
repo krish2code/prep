@@ -1,10 +1,10 @@
-package com.krish.iw;
+package com.krish.iw.im;
 
 public class BalancedPartition {
 
     public static void main(String[] args) {
         int[] arr = {1,2,3,4,5,6,7};
-        balancedPartition(arr);
+        System.out.println(balancedPartition(arr));
     }
 
     private static boolean balancedPartition(int[] arr) {

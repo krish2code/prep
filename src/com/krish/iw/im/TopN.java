@@ -1,4 +1,4 @@
-package com.krish.iw;
+package com.krish.iw.im;
 
 import java.util.PriorityQueue;
 

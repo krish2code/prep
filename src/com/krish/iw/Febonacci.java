@@ -31,7 +31,6 @@ public class Febonacci {
             prev = temp;
         }
         
-        
         return curr;
     }
 }

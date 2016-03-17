@@ -3,9 +3,9 @@ package com.krish.list;
 public class ListBasic {
 
     public static void main(String[] args) {
-        Node node1 = new Node(1, null);
-        Node node2 = new Node(3, null);
-        Node node3 = new Node(5, null);
+        Node1 node1 = new Node1(1, null);
+        Node1 node2 = new Node1(3, null);
+        Node1 node3 = new Node1(5, null);
 
         node1.next = node2;
         node2.next = node3;
@@ -13,30 +13,30 @@ public class ListBasic {
 
         printList(node1);
 
-        Node node4 = new Node(2, null);
-        Node node5 = new Node(4, null);
-        Node node6 = new Node(6, null);
+        Node1 node4 = new Node1(2, null);
+        Node1 node5 = new Node1(4, null);
+        Node1 node6 = new Node1(6, null);
 
         node4.next = node5;
         node5.next = node6;
         node6.next = null;
 
-        Node mergeListNode = MergeLists(node1, node4);
+        Node1 mergeListNode = MergeLists(node1, node4);
 
         System.out.println();
         System.out.println("mergeListNode : ");
         printList(mergeListNode);
 
-        Node removed = removeSecond(node1);
+        Node1 removed = removeSecond(node1);
         printList(removed);
         printList(node1);
 
         printListBackward(node1);
         
         
-        Node node7 = new Node(7, null);
-        Node node8 = new Node(8, null);
-        Node node9 = new Node(9, null);
+        Node1 node7 = new Node1(7, null);
+        Node1 node8 = new Node1(8, null);
+        Node1 node9 = new Node1(9, null);
 
         node7.next = node8;
         node8.next = node9;
@@ -47,11 +47,11 @@ public class ListBasic {
 
     }
 
-    private static boolean hasLoop(Node first) {
+    private static boolean hasLoop(Node1 first) {
         if(first == null) 
             return false;
         
-        Node slow, fast;
+        Node1 slow, fast;
         slow = fast = first;
         
         while(true) {
@@ -70,24 +70,24 @@ public class ListBasic {
         }
     }
 
-    private static Node MergeLists(Node list1, Node list2) {
-        if (list1 == null)
-            return list2;
-        if (list2 == null)
-            return list1;
+    private static Node1 MergeLists(Node1 node1, Node1 node2) {
+        if (node1 == null)
+            return node2;
+        if (node2 == null)
+            return node1;
 
-        if (list1.cargo < list2.cargo) {
-            list1.next = MergeLists(list1.next, list2);
-            return list1;
+        if (node1.cargo < node2.cargo) {
+            node1.next = MergeLists(node1.next, node2);
+            return node1;
         } else {
-            list2.next = MergeLists(list2.next, list1);
-            return list2;
+            node2.next = MergeLists(node2.next, node1);
+            return node2;
         }
     }
 
     // called traversal
-    private static void printList(Node list) {
-        Node node = list;
+    private static void printList(Node1 list) {
+        Node1 node = list;
         while (node != null) {
             System.out.print(node);
             node = node.next;
@@ -95,20 +95,20 @@ public class ListBasic {
         System.out.println(" ");
     }
 
-    private static void printListBackward(Node lst) {
+    private static void printListBackward(Node1 lst) {
         if (lst == null)
             return;
 
-        Node head = lst;
-        Node tail = lst.next;
+        Node1 head = lst;
+        Node1 tail = lst.next;
 
         printListBackward(tail);
         System.out.print(head);
     }
 
-    private static Node removeSecond(Node lst) {
-        Node first = lst;
-        Node second = first.next;
+    private static Node1 removeSecond(Node1 lst) {
+        Node1 first = lst;
+        Node1 second = first.next;
 
         first.next = second.next;
         second.next = null;
@@ -117,16 +117,16 @@ public class ListBasic {
     }
 }
 
-class Node {
+class Node1 {
     int cargo;
-    Node next;
+    Node1 next;
 
-    public Node() {
+    public Node1() {
         cargo = 0;
         next = null;
     }
 
-    public Node(int cargo, Node next) {
+    public Node1(int cargo, Node1 next) {
         this.cargo = cargo;
         this.next = next;
     }
