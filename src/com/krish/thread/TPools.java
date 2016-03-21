@@ -28,12 +28,14 @@ public class TPools {
     public static void main(String[] args) {
         ExecutorService ex = Executors.newFixedThreadPool(2);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 10; i++) {
             ex.submit(new Processor(i));
         }
         ex.shutdown();
 
         System.out.println("All task submitted.");
+        
+        System.out.println("");
 
         try {
             ex.awaitTermination(1, TimeUnit.DAYS);
@@ -42,6 +44,8 @@ public class TPools {
         }
         
         System.out.println("All task completed.");
+        
+        System.out.println("");
     }
 }
 

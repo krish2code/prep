@@ -3,7 +3,7 @@ package com.krish.iw.im;
 public class LongestCommonPreFix {
 
     public static void main(String[] args) {
-        String[] arr = { "aj", "a", "aje"};
+        String[] arr = { "aje", "aj", "ajee"};
         System.out.println(preFix(arr));
     }
 

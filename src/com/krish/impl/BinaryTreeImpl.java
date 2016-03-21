@@ -1,12 +1,53 @@
 package com.krish.impl;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 
 public class BinaryTreeImpl {
 
+    public static void main(String[] args) {
+        BST bst = new BST();
+        bst.add(8);
+        bst.add(4);
+        bst.add(9);
+        bst.add(5);
+        bst.add(11);
+        bst.add(3);
+        
+        bst.levelOrder();
+    }
 }
 
 class BST {
     BNode root;
+    
+    
+    public void levelOrder() {
+        levelOrder(root);
+    }
+    
+    private void levelOrder(BNode node) {
+
+        if(node != null) {
+            Queue<BNode> queue = new LinkedList<BNode>();
+            queue.add(node);
+            
+            while(!queue.isEmpty()) {
+                BNode temp = queue.poll();
+                System.out.print(temp.data + " ");
+                
+                if(temp.left != null) {
+                    queue.add(temp.left);
+                }
+                
+                if(temp.right != null) {
+                    queue.add(temp.right);
+                }
+            }
+            
+        }
+    }
 
     public BNode findLCA(int n1, int n2) {
         return findLCA(root, n1, n2);

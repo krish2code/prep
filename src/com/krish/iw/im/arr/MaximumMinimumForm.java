@@ -1,4 +1,4 @@
-package com.krish.iw.im;
+package com.krish.iw.im.arr;
 
 public class MaximumMinimumForm {
     public static void main(String[] args) {

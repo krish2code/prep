@@ -1,4 +1,4 @@
-package com.krish.iw.im;
+package com.krish.iw.im.arr;
 
 public class LeastConsecutiveAvg {
 
