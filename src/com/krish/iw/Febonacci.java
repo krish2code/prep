@@ -3,9 +3,7 @@ package com.krish.iw;
 public class Febonacci {
 
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
-            System.out.print(feb(i) + " ");
-        }
+        System.out.print(febo(10));
     }
 
     private static int febo(int i) {

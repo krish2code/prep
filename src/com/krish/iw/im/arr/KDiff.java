@@ -5,8 +5,8 @@ import java.util.Arrays;
 
 public class KDiff {
     public static void main(String[] args) {
-        int[] arr = {1,5,3,4,2};
-        int k =2;
+        int[] arr = {1,5,3,4,2,4,6};
+        int k = 2;
         System.out.println(count(arr, k));
     }
 

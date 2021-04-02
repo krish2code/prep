@@ -88,15 +88,6 @@ class LRUCache {
             end = n.prev;
         }
     }
-    
-//    @Override
-//    public String toString() {
-//        StringBuilder sb = new StringBuilder();
-//        for(Map.Entry<Integer, LRUNode> entry : map.entrySet()) {
-//            sb.append(entry.getKey() + " : " + entry.getValue().key);
-//        }
-//        return sb.toString();
-//    }
 }
 
 class LRUNode {

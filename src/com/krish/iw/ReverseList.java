@@ -12,7 +12,7 @@ public class ReverseList {
         ArrayList<Integer> lst1 = new ArrayList<Integer>();
         lst1.add(1);
         lst1.add(2);
-        lst1.add(3);
+//        lst1.add(3);
         //reverse(lst);
         reverseRecurssive(lst1);
         System.out.println(lst1);
