@@ -7,7 +7,7 @@ public class FindNumbers {
         System.out.println(findNumbers(nums));
     }
 
-    private static int findNumbers(int[] nums) {
+    public static int findNumbers(int[] nums) {
         if(nums.length == 0) {
             return 0;
         }
