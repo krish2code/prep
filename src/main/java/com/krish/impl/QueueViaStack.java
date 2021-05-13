@@ -28,7 +28,7 @@ class QueueNew<T>
         inbox.push(item);
     }
 
-    public T dequeue2() {
+    public T dequeue() {
         if (outbox.isEmpty()) {
             while (!inbox.isEmpty()) {
                outbox.push(inbox.pop());
@@ -37,7 +37,7 @@ class QueueNew<T>
         return outbox.pop();
     }
 
-    public T dequeue() {
+    public T dequeue2() {
         if(inbox.isEmpty()) {
             T value = inbox.pop();
             dequeue();
