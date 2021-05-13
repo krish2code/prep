@@ -4,7 +4,7 @@ public class KthLargest {
     public static void main(String[] args) {
         int[] nums = {3,4,7,5,6};
         int k = 2;
-        int val = kthLargest(nums, nums.length-k+1, 0, nums.length-1);
+        int val = kthLargest(nums, nums.length-k, 0, nums.length-1);
         System.out.println(val);
     }
 
@@ -15,32 +15,32 @@ public class KthLargest {
         }
 
         int pivot = arr[endIndex];
-        int leftIndex = startIndex;
-        int rightIndex = endIndex;
+        int i = startIndex;
+        int j = endIndex;
 
         while (true) {
-            while(arr[leftIndex] < pivot && leftIndex < rightIndex) {
-                leftIndex++;
+            while(arr[i] < pivot && i < j) {
+                i++;
             }
 
-            while(arr[rightIndex] >= pivot && leftIndex < rightIndex) {
-                rightIndex--;
+            while(arr[j] >= pivot && i < j) {
+                j--;
             }
 
-            if (leftIndex == rightIndex) {
+            if (i == j) {
                 break;
             }
-            swap(arr, leftIndex, rightIndex);
+            swap(arr, i, j);
         }
 
-        swap(arr, leftIndex, endIndex);
+        swap(arr, i, endIndex);
 
-        if(k == leftIndex+1) {
+        if(k == i) {
             return pivot;
-        } else if (k < leftIndex+1){
-            return kthLargest(arr, k, startIndex, leftIndex-1);
+        } else if (k < i){
+            return kthLargest(arr, k, startIndex, i-1);
         } else {
-            return kthLargest(arr, k, leftIndex+1, endIndex);
+            return kthLargest(arr, k, i+1, endIndex);
         }
     }
 

@@ -13,7 +13,7 @@ public class LCA {
         bt.root.rightNode.leftNode = new Node(6);
         bt.root.rightNode.rightNode = new Node(7);
 
-        System.out.println("LCA(4, 5) = " + bt.findLCA(2, 4).data);
+        System.out.println("LCA(4, 5) = " + bt.findLCA(4, 7).data);
     }
 
     private Node findLCA(int n1, int n2) {
@@ -30,11 +30,12 @@ public class LCA {
         Node left_lca_node = findLCA(node.leftNode, n1, n2);
         Node right_lca_node = findLCA(node.rightNode, n1, n2);
 
-        if (left_lca_node != null && right_lca_node != null)
+        if(left_lca_node == null) {
+            return right_lca_node;
+        } else if (right_lca_node == null) {
+            return left_lca_node;
+        } else {
             return node;
-
-        return (left_lca_node != null) ? left_lca_node : right_lca_node;
-
+        }
     }
-
 }
